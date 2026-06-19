@@ -1,8 +1,16 @@
+import EmployeeHead from "./EmployeeHead"
+import EmployeeList from "./EmployeeList"
+import SearchBar from "./SearchBar"
 
 
 const Employee = () => {
   return (
-    <div>Employee</div>
+    <>
+    <EmployeeHead/>
+    <SearchBar/>
+    <EmployeeList/>
+    </>
+  
   )
 }
 
