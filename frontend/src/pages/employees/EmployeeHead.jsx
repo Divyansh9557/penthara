@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 
 
 const EmployeeHead = () => {
@@ -8,7 +9,7 @@ const EmployeeHead = () => {
       
         <div>
           <p className="text-sm text-emerald-400 font-medium mb-2">
-            Directory
+            Employees
           </p>
 
           <h1 className="text-4xl font-semibold text-white tracking-tight">
@@ -22,10 +23,10 @@ const EmployeeHead = () => {
 
         
         <div>
-          <button className="flex items-center gap-2 bg-green-500 text-black px-5 py-2.5 rounded-xl hover:bg-green-300 transition">
+          <Link to={'/employee/add'} className="flex items-center gap-2 bg-green-500 text-black px-5 py-2.5 rounded-xl hover:bg-green-300 transition">
             <span className="text-lg font-semibold">+</span>
             Add employee
-          </button>
+          </Link>
         </div>
 
       </div>
