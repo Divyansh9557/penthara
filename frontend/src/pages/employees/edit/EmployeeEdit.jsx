@@ -7,7 +7,7 @@ import { Link } from "react-router"
 import EmployeeForm from "../../../components/EmployeeForm"
 
 
-export default function EmployeeAdd() {
+export default function EmployeeEdit() {
   return (
     <div className="min-h-screen bg-zinc-950 text-white flex items-center justify-center p-6">
 
@@ -21,7 +21,7 @@ export default function EmployeeAdd() {
           </Link>
 
           <h1 className="mt-8 text-5xl font-semibold tracking-tight">
-            Add a new teammate
+            Edit Teammates Details
           </h1>
 
           <p className="mt-3 text-zinc-400 text-lg">

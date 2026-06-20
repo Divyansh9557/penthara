@@ -1,5 +1,6 @@
 
 import { Mail, Building, Edit, Trash } from "lucide-react";
+import { Link } from "react-router";
 const EmployeeCard = ({user,index}) => {
   return (
     <div
@@ -25,9 +26,9 @@ const EmployeeCard = ({user,index}) => {
 
    
     <div className="flex items-center gap-2">
-      <button className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
+      <Link to={`/employee/edit/${index}`} className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
         <Edit/>
-      </button>
+      </Link>
       <button className="text-gray-400 hover:text-red-400 p-2 rounded-lg hover:bg-red-500/10 transition">
         <Trash/>
       </button>
