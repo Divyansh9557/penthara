@@ -12,6 +12,7 @@ export const getUser = async (req, res) => {
 export const createUser = async (req, res) => {
   try {
     const { fullname, email, department, role } = req.body;
+    console.log(req.body)
     const user = await User.findOne({ email });
     if (user) throw new Error("User already exist");
 
@@ -29,10 +30,10 @@ export const createUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    const { _id } = req.body;
+    const { id } = req.body;
     const user = await User.findById(id);
     if (!user) throw new Error("User not found");
-    await User.deleteOne({ _id });
+    await User.deleteOne({_id:id})
     res.status(201).json({ message: "user deleted succesfully" });
   } catch (error) {
     res.status(401).json({ error: error.message });

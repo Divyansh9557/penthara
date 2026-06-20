@@ -1,7 +1,34 @@
 
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Mail, Building, Edit, Trash } from "lucide-react";
 import { Link } from "react-router";
 const EmployeeCard = ({user,index}) => {
+   const first = user.fullname[0].toUpperCase()
+   const second = user.fullname[1].toUpperCase()
+   const {_id:id} = user
+   const queryClient = useQueryClient()
+
+   const {mutate:deleteUser} = useMutation({
+    mutationFn:async(id)=>{
+      const res = await fetch("http://localhost:5000/employee/delete",{
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({id})
+      })
+      const data = await res.json()
+      return data
+    },
+    onSuccess:async()=>{
+      await queryClient.invalidateQueries({queryKey:"employeeData"})
+    }
+   })
+
+   const handleDelete = ()=>{
+      deleteUser(id)
+   }
+
   return (
     <div
   key={index}
@@ -13,12 +40,12 @@ const EmployeeCard = ({user,index}) => {
     
     <div className="flex items-center gap-4">
       <div className="w-12 h-12 rounded-full bg-emerald-400/10 text-emerald-400 flex items-center justify-center font-semibold">
-        {user.initials}
+        {first+second}
       </div>
 
       <div>
         <h2 className="text-white font-semibold text-lg">
-          {user.name}
+          {user.fullname}
         </h2>
         <p className="text-gray-400 text-sm">{user.role}</p>
       </div>
@@ -29,7 +56,7 @@ const EmployeeCard = ({user,index}) => {
       <Link to={`/employee/edit/${index}`} className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
         <Edit/>
       </Link>
-      <button className="text-gray-400 hover:text-red-400 p-2 rounded-lg hover:bg-red-500/10 transition">
+      <button onClick={handleDelete} className="text-gray-400 hover:text-red-400 p-2 rounded-lg hover:bg-red-500/10 transition">
         <Trash/>
       </button>
     </div>
@@ -43,7 +70,7 @@ const EmployeeCard = ({user,index}) => {
   <div className="space-y-2 text-sm">
     <div className="flex items-center gap-2 text-gray-400">
       <Building size={16} />
-      {user.dept}
+      {user.department}
     </div>
 
     <div className="flex items-center gap-2 text-gray-400">

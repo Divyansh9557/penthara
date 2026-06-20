@@ -17,6 +17,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useNavigate } from "react-router"
 
 const EmployeeForm = () => {
 
@@ -26,13 +28,35 @@ const EmployeeForm = () => {
     register,
     handleSubmit,
     setValue,
-    formState: { errors },
+    
   } = useForm()
 
+  const queryClient = useQueryClient()
+  const navigate = useNavigate()
+  const {mutate} = useMutation({
+      mutationFn:async(user)=>{
+         console.log(user)
+           const res = await fetch("http://localhost:5000/employee/create",{
+             method:"POST",
+             headers:{
+              "Content-Type":"application/json"
+             },
+             body: JSON.stringify(user)
+           })
+           
+
+           const data = await res.json()
+           return data
+      },
+      onSuccess:async()=>{
+        await queryClient.invalidateQueries({queryKey:"employeeData"})
+        navigate("/employee")
+      }
+  })
 
   const onSubmit = (data)=>{
-   console.log(data);
-   
+    
+   mutate(data)
   }
 
   return (
