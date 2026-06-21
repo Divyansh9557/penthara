@@ -1,7 +1,7 @@
 import { Link } from "react-router"
 
 
-const EmployeeHead = () => {
+const EmployeeHead = ({totalEmployee}) => {
   return (
      <div className="w-full bg-black  border-white/10">
       <div className="max-w-7xl mx-auto px-6 py-10 flex items-center justify-between">
@@ -17,7 +17,7 @@ const EmployeeHead = () => {
           </h1>
 
           <p className="text-gray-400 mt-2 text-lg">
-            6 people across 5 departments.
+            Total Employee: {totalEmployee}
           </p>
         </div>
 

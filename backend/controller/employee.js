@@ -2,8 +2,13 @@ import User from "../models/user.schema.js";
 
 export const getUser = async (req, res) => {
   try {
-    const user = await User.find();
-    if(!user) return res.send("hello")
+    const {query=""} = req.query
+    const user = await User.find({
+      $or:[
+        {fullname: {$regex:query , $options:"i" } },
+        {department:{$regex:query,$options:"i"}}
+      ]
+    });
     res.status(200).json(user);
   } catch (error) {
     res.status(401).json({ error: true });

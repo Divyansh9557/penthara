@@ -1,7 +1,16 @@
 
+// import { useQueryClient } from "@tanstack/react-query";
 import { Search } from "lucide-react";
 
-const SearchBar = () => {
+const SearchBar = ({search,setSearch}) => {
+ 
+  // const queryClient= useQueryClient()
+
+  const handleChange = async(e)=>{
+     setSearch(e.target.value)
+     
+  }
+
   return (
     <div className="w-full bg-black px-6 py-6">
       <div className="max-w-5xl mx-auto">
@@ -15,6 +24,8 @@ const SearchBar = () => {
             type="text"
             placeholder="Search by name or department..."
             className="w-full bg-transparent outline-none text-white placeholder-gray-500"
+            value={search}
+            onChange={handleChange }
           />
         </div>
       </div>
