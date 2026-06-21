@@ -29,7 +29,7 @@ export default function EmployeeAdd() {
           </p>
         </div>
 
-         <EmployeeForm/>
+         <EmployeeForm type={"add"} />
       
 
 

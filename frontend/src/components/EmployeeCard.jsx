@@ -29,6 +29,8 @@ const EmployeeCard = ({user,index}) => {
       deleteUser(id)
    }
 
+   
+
   return (
     <div
   key={index}
@@ -53,7 +55,7 @@ const EmployeeCard = ({user,index}) => {
 
    
     <div className="flex items-center gap-2">
-      <Link to={`/employee/edit/${index}`} className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
+      <Link to={`/employee/edit/${id}`} className="text-gray-400 hover:text-white p-2 rounded-lg hover:bg-white/10 transition">
         <Edit/>
       </Link>
       <button onClick={handleDelete} className="text-gray-400 hover:text-red-400 p-2 rounded-lg hover:bg-red-500/10 transition">

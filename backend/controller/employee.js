@@ -43,7 +43,7 @@ export const deleteUser = async (req, res) => {
 export const updateuser = async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
-      req.body.id,
+      req.params.id,
       {
         fullname: req.body.fullname,
         email: req.body.email,
@@ -69,3 +69,14 @@ export const updateuser = async (req, res) => {
     res.status(401).json({ error: error.message });
   }
 };
+
+export const getSingleEmployee = async(req,res)=>{
+  try {
+    const {id} = req.params;
+    const user = await User.findById(id);
+    if(!user) return res.status(401).json({error:"User not found"});
+    res.status(200).json(user)
+  } catch (error) {
+     res.status(401).json({error})
+  }
+}
