@@ -1,6 +1,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Mail, Building, Edit, Trash } from "lucide-react";
+import toast from "react-hot-toast";
 import { Link } from "react-router";
 const EmployeeCard = ({user,index}) => {
    const first = user.fullname[0].toUpperCase()
@@ -21,7 +22,8 @@ const EmployeeCard = ({user,index}) => {
       return data
     },
     onSuccess:async()=>{
-      await queryClient.invalidateQueries({queryKey:"employeeData"})
+      await queryClient.invalidateQueries({queryKey:["employeeData"]})
+      toast.success("User Deleted Sucessfully")
     }
    })
 

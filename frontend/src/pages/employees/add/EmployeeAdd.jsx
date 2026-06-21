@@ -17,7 +17,7 @@ export default function EmployeeAdd() {
         <div className="mb-8">
           <Link to={'/employee'} className="flex items-center gap-2 text-sm text-zinc-400 hover:text-white">
             <ArrowLeft size={16}/>
-            Back to directory
+            Back to Employee List
           </Link>
 
           <h1 className="mt-8 text-5xl font-semibold tracking-tight">

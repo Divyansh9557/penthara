@@ -20,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import toast from "react-hot-toast";
 
 const EmployeeForm = () => {
   const { id } = useParams();
@@ -95,7 +96,7 @@ const EmployeeForm = () => {
         await queryClient.invalidateQueries({
           queryKey: ["employeeData"],
         });
-
+      toast.success("User Created Sucessfully")
         navigate("/employee");
       },
     });
@@ -126,7 +127,7 @@ const EmployeeForm = () => {
         await queryClient.invalidateQueries({
           queryKey: ["employeeData"],
         });
-
+        toast.success("User Updated Sucessfully")
         navigate("/employee");
       },
     });
@@ -163,7 +164,7 @@ const EmployeeForm = () => {
               </Label>
 
               <Input
-                placeholder="Jane Doe"
+                placeholder="Divyansh Saini"
                 className="
                   bg-zinc-950
                   border-zinc-700
@@ -279,7 +280,7 @@ const EmployeeForm = () => {
 
               <Input
                 type="email"
-                placeholder="jane@company.com"
+                placeholder="penthara@company.com"
                 className="
                   bg-zinc-950
                   border-zinc-700

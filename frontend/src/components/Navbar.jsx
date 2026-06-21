@@ -14,18 +14,18 @@ const Navbar = () => {
 
          
           <div className="flex items-center space-x-8">
-            <a href="#" className="hover:text-blue-400 transition">Home</a>
-            <Link to={"/employee"}  className="hover:text-blue-400 transition" >About</Link>
-            <a href="#" className="hover:text-blue-400 transition">Services</a>
-            <a href="#" className="hover:text-blue-400 transition">Contact</a>
+            <Link to="/" className="hover:text-blue-400 transition">Home</Link>
+            <Link to={"/employee"}  className="hover:text-blue-400 transition" >Employee </Link>
+            <Link to={`/employee/add`} className="hover:text-blue-400 transition">Add employee</Link>
+            
           </div>
 
          
-          <div>
+          {/* <div>
             <button className="bg-blue-500 px-4 py-2 rounded-lg hover:bg-blue-600 transition">
               Login
             </button>
-          </div>
+          </div> */}
 
         </div>
       </div>
