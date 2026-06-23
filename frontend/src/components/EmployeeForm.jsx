@@ -312,6 +312,8 @@ const EmployeeForm = () => {
                 hover:bg-zinc-200
                 rounded-xl
                 px-8
+                -translate-x-8
+                md:translate-x-0
                 h-12
               "
               disabled={isCreating || isUpdating}

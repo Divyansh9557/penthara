@@ -20,11 +20,11 @@ export default function EmployeeEdit() {
             Back to Employee List
           </Link>
 
-          <h1 className="mt-8 text-5xl font-semibold tracking-tight">
+          <h1 className="mt-8 text-3xl md:text-5xl font-semibold tracking-tight">
             Edit Teammates Details
           </h1>
 
-          <p className="mt-3 text-zinc-400 text-lg">
+          <p className="mt-3 text-zinc-400 text-sm md:text-lg">
             Add the information — you can always edit later.
           </p>
         </div>

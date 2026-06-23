@@ -7,7 +7,7 @@ const EmployeeList = ({ users, isLoading }) => {
       {isLoading ? (
         <Loader className="text-white h-20 w-20 mx-auto animate-spin " />
       ) : (
-        <div className="max-w-7xl mx-auto grid grid-cols-3 gap-6">
+        <div className="max-w-7xl mx-auto  grid grid-cols-2 md:grid md:grid-cols-3 gap-6">
           { users?.lenght===0 ? <UserNotFound/>  :users?.map((user, index) => (
             <EmployeeCard user={user} key={user._id} index={index} />
           ))}
@@ -25,7 +25,7 @@ import { SearchX } from "lucide-react";
 
 const UserNotFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center py-20 px-6">
+    <div className="flex flex-col items-center justify-center  py-20 px-6">
       <div className="bg-zinc-900 border border-zinc-800 rounded-full p-5 mb-6">
         <SearchX className="h-12 w-12 text-zinc-400" />
       </div>

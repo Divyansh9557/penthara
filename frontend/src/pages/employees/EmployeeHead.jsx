@@ -12,7 +12,7 @@ const EmployeeHead = ({totalEmployee}) => {
             Employees
           </p>
 
-          <h1 className="text-4xl font-semibold text-white tracking-tight">
+          <h1 className=" text-2xl md:text-4xl font-semibold text-white tracking-tight">
             The whole team
           </h1>
 
@@ -23,7 +23,7 @@ const EmployeeHead = ({totalEmployee}) => {
 
         
         <div>
-          <Link to={'/employee/add'} className="flex items-center gap-2 bg-green-500 text-black px-5 py-2.5 rounded-xl hover:bg-green-300 transition">
+          <Link to={'/employee/add'} className="flex items-center gap-2 bg-green-500 text-black px-2 py-1 md:px-5 md:py-2.5 rounded-md md:rounded-xl hover:bg-green-300 transition">
             <span className="text-lg font-semibold">+</span>
             Add employee
           </Link>
