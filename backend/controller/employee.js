@@ -4,10 +4,16 @@ export const getUser = async (req, res) => {
   try {
     const {query=""} = req.query
     const user = await User.find({
-      $or:[
+     $and:[
+      {isAdmin:false},
+      {employee:true},
+      {
+         $or:[
         {fullname: {$regex:query , $options:"i" } },
         {department:{$regex:query,$options:"i"}}
       ]
+      }
+     ]
     });
     res.status(200).json(user);
   } catch (error) {
@@ -26,6 +32,7 @@ export const createUser = async (req, res) => {
       email,
       role,
       department,
+      employee:true,
     });
     res.status(201).json(newUser);
   } catch (error) {

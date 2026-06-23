@@ -1,9 +1,27 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import { Link } from "react-router";
+import toast from "react-hot-toast";
+import { Link} from "react-router";
 
 const Navbar = () => {
 
   const [open, setOpen] = useState(false);
+  const queryClient = useQueryClient()
+    const {mutate} = useMutation({
+    
+    mutationFn:async()=>{
+      const res= await fetch("http://localhost:5000/auth/logout",{credentials:"include"})
+      const data = await res.json()
+
+      return data
+    },
+    onSuccess:async()=>{
+      toast.success("Logout Successfully")
+      queryClient.invalidateQueries({queryKey:["getUser"]})
+      
+    }
+  })
+
 
   return (
     <nav className="bg-black text-white relative z-50">
@@ -32,6 +50,9 @@ const Navbar = () => {
             </Link>
 
           </div>
+           <button onClick={()=> mutate() } className="text-white cursor-pointer px-4 rounded-2xl py-2 bg-red-800 " >
+            Logout
+          </button>
 
 
           
@@ -84,8 +105,8 @@ const Navbar = () => {
 
           </div>
 
+         
         </div>
-
 
        
 

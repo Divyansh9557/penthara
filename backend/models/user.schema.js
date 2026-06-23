@@ -7,15 +7,27 @@ const userSchema = new mongoose.Schema({
     },
     role:{
         type:String,
-        required:true,
+        
     },
     department:{
          type:String,
-        required:true,
+     
     },
     email:{
         type:String,
         required:true,
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false,
+        
+    },
+    password:{
+        type:String,
+    },
+    employee:{
+        type:Boolean,
+        default:false,
     }
 
 },{timestamps:true})
